@@ -1,13 +1,20 @@
 /* Reset and General Styles */
+html,
+body {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
 * {
     padding: 0;
     margin: 0;
     /* font-family: 'Lora', serif; */
     box-sizing: border-box;
 }
-  html {
+
+html {
     scroll-behavior: smooth;
-  }
+}
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -28,8 +35,10 @@ header {
     z-index: 1000;
     transition: top 0.3s ease-in-out, background 0.3s;
     position: relative;
+    background-color: #f9f9f9;
 
 }
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -45,12 +54,15 @@ nav {
     z-index: 1000;
     transition: background 0.3s, padding 0.3s;
 }
+
 #projects2 {
-  scroll-margin-top: 60px;
+    scroll-margin-top: 60px;
 }
+
 #projects3 {
-  scroll-margin-top: 100px;
+    scroll-margin-top: 100px;
 }
+
 .nav-inner {
     display: flex;
     justify-content: space-between;
@@ -64,8 +76,8 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-      z-index: 1000;
-    background: 	#1C1C1E;
+    z-index: 1000;
+    background: #1C1C1E;
     padding: 15px 0;
 }
 
@@ -91,12 +103,12 @@ nav {
 
 .nav-container {
     position: relative;
-      z-index: 1000;
+    z-index: 1000;
 }
 
 .nav-links li {
     display: inline;
-      z-index: 1000;
+    z-index: 1000;
     position: relative;
 }
 
@@ -106,7 +118,7 @@ nav {
     font-size: 12px;
     letter-spacing: 1px;
     transition: color 0.3s;
-     z-index: 1000;
+    z-index: 1000;
     font-family: "Heebo", sans-serif;
 }
 
@@ -114,85 +126,8 @@ nav {
     color: rgb(180, 216, 230);
 }
 
-.pages-dropdown .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: white;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    min-width: 160px;
-    border: 1px solid #ddd;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-}
 
-.pages-dropdown:hover .dropdown-content {
-    display: block;
-    transform: translateY(0);
-    opacity: 1;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-}
 
-/* Animation for dropdown appearance */
-@keyframes fadeInSlideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.pages-dropdown {
-    position: relative;
-}
-
-.dropdown-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 2px;
-    opacity: 0;
-    border: none;
-    transform: translateY(20px);
-    visibility: hidden;
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-    margin-top: 30px; 
-}
-
-.pages-dropdown:hover .dropdown-content {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-    animation: fadeInSlideUp 0.3s ease-out;
-}
-
-.dropdown-content li {
-    list-style: none;
-    /* padding: 8px 10px; */
-}
-
-.dropdown-content a {
-    color: #383838;
-    text-decoration: none;
-    display: block;
-    padding: 8px 12px;
-    transition: background-color 0.2s ease-in-out;
-}
-
-.dropdown-content a:hover {
- background: 	#1C1C1E;
-    color: white;
-}
 
 .btn-free-trial {
     padding: 15px 30px;
@@ -208,6 +143,131 @@ nav {
 .btn-free-trial:hover {
     background: white;
     color: #000000;
+}
+
+/* Hide mobile nav elements by default */
+.hamburger,
+.mobile-nav,
+.overlay {
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+
+    /* Hide desktop nav */
+    nav {
+        display: none;
+    }
+
+    /* Show hamburger menu */
+    .hamburger {
+        position: fixed;
+        top: 15px;
+        left: 20px;
+        z-index: 1100;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 25px;
+        height: 20px;
+        cursor: pointer;
+        background: transparent;
+    }
+
+    .hamburger span {
+        height: 3px;
+        width: 100%;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    body.home .hamburger span {
+        background: white;
+    }
+
+    body.not-home .hamburger span {
+        background: black;
+    }
+
+    .hamburger:hover span {
+        background: white;
+    }
+
+    /* Mobile nav panel */
+    .mobile-nav {
+        position: fixed;
+        top: 100;
+        left: -250px;
+        width: 160px;
+        height: 70%;
+        background: #000;
+        color: white;
+        z-index: 1050;
+        transition: left 0.3s ease;
+        padding: 60px 20px;
+        display: block;
+    }
+
+    .mobile-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .mobile-nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-family: 'Heebo', sans-serif;
+        transition: color 0.3s;
+    }
+
+    .mobile-nav a:hover {
+        color: rgb(180, 216, 230);
+    }
+
+    .mobile-nav.open {
+        left: 0;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1040;
+        display: none;
+    }
+
+    .overlay.show {
+        display: block;
+    }
+
+    .mobile-nav .btn-free-trial {
+        border: 1px solid white;
+        border-radius: 5px;
+        padding: 10px 20px;
+        text-align: center;
+        display: inline-block;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    /* Hover effect for hamburger menu */
+    .hamburger:hover span {
+        background: white;
+    }
+
+    .mobile-nav .btn-free-trial:hover {
+        background: white;
+        color: black;
+    }
+
 }
 
 h1,
@@ -233,7 +293,7 @@ h2 {
 p {
     font-size: 16px;
     line-height: 1.6;
-    
+
     text-align: justify;
     word-spacing: 2px;
 }
@@ -257,6 +317,7 @@ p {
     perspective: 1000px;
     overflow: hidden;
 }
+
 .intro-content {
     text-align: center;
     transform-origin: center;
@@ -266,8 +327,9 @@ p {
 
 
 .intro-header::before {
-    background: rgba(0, 0, 0, 0.4); /* keep your overlay */
-  
+    background: rgba(0, 0, 0, 0.4);
+    /* keep your overlay */
+
 }
 
 
@@ -298,6 +360,26 @@ p {
     font-family: "Heebo", sans-serif;
 }
 
+@media (max-width: 768px) {
+    .intro-header {
+        height: 40vh;
+        /* or try 60vh, depending on how compact you want it */
+    }
+
+    .intro-content {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .intro-content h1 {
+        font-size: 40px;
+    }
+
+    .intro-content h2 {
+        font-size: 24px;
+    }
+}
+
 .contact-image {
     background-image: url('non.jpg');
     background-size: cover;
@@ -320,7 +402,7 @@ p {
     transform: translateY(-50%);
     color: white;
     font-size: 1.5em;
-    width: 40%;
+    width: 90%;
     z-index: 1;
     /* High z-index to stay on top initially */
 
@@ -356,7 +438,7 @@ p {
     transform: translateY(-50%);
     color: white;
     font-size: 1.5em;
-    width: 40%;
+    width: 90%;
     z-index: 1;
     /* High z-index to stay on top initially */
 
@@ -370,37 +452,97 @@ p {
     width: auto;
 }
 
+@media (max-width: 768px) {
+
+    /* Shared image background styles for full-width sections */
+    .career-image,
+    .Application-Of-Graphic-Designs,
+    .projectbg,
+    .footbg,
+    .contact-image {
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: rgba(28, 24, 24, 0.626);
+        background-blend-mode: overlay;
+        background-attachment: fixed;
+        position: relative;
+    }
+
+    /* Shared quote container styles */
+    .career-quote,
+    .Application-Of-Graphic-Designs-quote,
+    .projectbg-quote,
+    .contact-quote {
+        position: absolute;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 1.2em;
+        width: 90%;
+        text-align: center;
+        /* padding: 10px; */
+        /* margin: 0 40px; */
+        z-index: 1;
+    }
+
+    /* Shared quote <p> text styles */
+    .career-quote p,
+    .Application-Of-Graphic-Designs-quote p,
+    .projectbg-quote p,
+    .contact-quote p {
+        color: white;
+        margin: 0 40px;
+        line-height: 1.4;
+        text-align: left;
+        font-size: 14px;
+        width: 80%;
+
+    }
+}
 
 /* About Me Section Styles */
 .about-me-section {
     padding: 50px 0;
+    background-color: #f9f9f9;
 }
 
 .about-me {
     display: flex;
-    align-items: center; /* Vertically align text and image */
+    align-items: center;
+    /* Vertically align text and image */
 }
 
 .about-me-description {
-    flex: 1; /* Take up remaining space */
-    padding-right: 20px;
+    flex: 1;
+    /* Take up remaining space */
+    /* padding-right: 20px; */
 }
 
 .about-me-image {
-    width: 300px; /* Adjust as needed */
-    height: 300px; /* Should match width for a perfect circle */
+    width: 300px;
+    /* Adjust as needed */
+    height: 300px;
+    /* Should match width for a perfect circle */
     border-radius: 50%;
-    overflow: hidden; /* Clip the image to the circle */
-    margin-left: 20px; /* Add some spacing between text and image */
-    float: right; /* Float the image to the right */
-    shape-outside: circle(50% at 50% 50%); /* Define the wrapping shape */
-    shape-margin: 20px; /* Add margin around the wrapping shape */
+    overflow: hidden;
+    /* Clip the image to the circle */
+    margin-left: 20px;
+    /* Add some spacing between text and image */
+    float: right;
+    /* Float the image to the right */
+    shape-outside: circle(50% at 50% 50%);
+    /* Define the wrapping shape */
+    shape-margin: 20px;
+    /* Add margin around the wrapping shape */
 }
 
 .about-me-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure the image covers the circle */
+    object-fit: cover;
+    /* Ensure the image covers the circle */
 }
 
 /* Clear the float to prevent layout issues with subsequent elements */
@@ -409,10 +551,82 @@ p {
     display: table;
     clear: both;
 }
+
+/* Default desktop styles */
+.mobile-only {
+    display: none;
+}
+
+.desktop-only {
+    display: block;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .intro-header {
+        height: 40vh;
+    }
+
+    .intro-content {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    h1,
+    .intro-content h1 {
+        font-size: 40px;
+    }
+
+    .intro-content h2 {
+        font-size: 24px;
+    }
+
+    /* Mobile image styling */
+    .mobile-only {
+        display: block;
+        margin: 0 auto 20px auto;
+        width: 100%;
+        max-width: 300px;
+        border-radius: 50%;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .about-me {
+        display: block;
+    }
+
+    .about-me-section {
+        padding: 30px 20px;
+    }
+
+    .about-me-description p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .about-me-section,
+    .contact-details-section {
+        height: auto !important;
+        min-height: unset;
+        padding: 40px 40px;
+    }
+
+    .career-objectives-section {
+
+        padding: 40px 45px;
+    }
+}
+
 /* Contact Details Section Styles */
 .contact-details-section {
     padding: 200px 0;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     height: 600px;
 
     /* Light background */
@@ -439,7 +653,7 @@ p {
 
     color: rgb(255, 255, 255);
     /* Change text color on hover */
-  background: 	#1C1C1E;
+    background: #1C1C1E;
 }
 
 .social-media {
@@ -481,6 +695,7 @@ p {
 /* Career Objectives Section Styles */
 .career-objectives-section {
     padding: 50px 0;
+    background-color: #ffffff;
 }
 
 /* Education Section Styles */
@@ -531,7 +746,7 @@ p {
     transform: scale(1.15);
     background-color: #1b426e1a;
     color: rgb(255, 255, 255);
-     background: 	#1C1C1E;
+    background: #1C1C1E;
 }
 
 .websites {
@@ -560,8 +775,114 @@ p {
     transform: scale(1.15);
     background-color: #1b426e1a;
     color: rgb(255, 255, 255);
-   background: 	#1C1C1E;
+    background: #1C1C1E;
 }
+
+@media (max-width: 768px) {
+    /* General container adjustments */
+
+    .Application-Of-Graphic-Design,
+    .contact,
+    .contact-details-section {
+
+        height: auto;
+    }
+
+    /* Make grid stack vertically */
+    .contact-details {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .contact-info {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .career-objectives-section,
+    .education-section,
+    .work-experience-section,
+    .webpage-examples-section,
+    .contact-details-section,
+    .Application-of-GD,
+    .websites,
+    .Projects,
+    .address {
+        padding: 40px 40px;
+    }
+
+    /* Make social icons stack better */
+    .social-icons {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .social-icons a {
+        font-size: 22px;
+    }
+
+    /* Section Headings */
+    h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    p {
+        font-size: 14px;
+        text-align: justify;
+        /* Ensures uniform spacing between words */
+        line-height: 1.5;
+
+    }
+
+    /* Webpage example buttons stacked and responsive */
+    .webpage-examples-section,
+    .websites {
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .webpage-examples-section button,
+    .websites button {
+        width: 70%;
+        max-width: 300px;
+        font-size: 14px;
+        margin: 10px auto;
+        padding: 12px;
+    }
+
+    .button-container,
+    .Project-categories {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Make work experience section readable */
+    .work-experience-section {
+        display: block;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    p,
+    .Application-of-GD div,
+    .Application-of-GD span,
+    .Application-of-GD {
+        font-size: 13px;
+    }
+
+    .Application\ of\ GD {
+        font-size: 12px;
+    }
+}
+
+
 
 .Application-Of-Graphic-Design img {
     width: 100%;
@@ -595,7 +916,7 @@ h2 {
     transform: translateY(-50%);
     color: white;
     font-size: 1.5em;
-    width: 40%;
+    width: 90%;
     z-index: 1;
     /* High z-index to stay on top initially */
 
@@ -603,11 +924,11 @@ h2 {
 
 .Application-Of-Graphic-Designs-quote p {
     color: white;
-    margin: 0;
+    margin: 0 40px;
     line-height: 1.4;
     /* margin: 0 38%; */
     height: auto;
-    width: 100%;
+    width: 80%;
 }
 
 .Projects {
@@ -652,24 +973,8 @@ h2 {
     flex-direction: column;
     align-items: center;
 }
+/* Project button layout */
 
-.Project-categories button {
-    font-size: 16px;
-    margin: 10px;
-    cursor: pointer;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    width: 250px;
-}
-
-.Project-categories button:hover {
-    transform: scale(1.15); /* Slightly reduced scale for a subtle effect */
-    background: 	#1C1C1E;
-    color: white;
-    outline: none;
-}
 .image-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -680,7 +985,8 @@ h2 {
 .image-grid img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Changed from cover to contain */
+    object-fit: contain;
+    /* Changed from cover to contain */
     border: 4px solid white;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
     background-color: rgb(255, 255, 255);
@@ -708,41 +1014,14 @@ h2 {
     z-index: 2;
     text-indent: -9999px;
 }
-.projectbg {
-    background-image: url('rainbow\ bear.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 350px;
-    background-color: rgba(28, 24, 24, 0.626);
-    background-blend-mode: overlay;
-    background-attachment: fixed;
-    position: relative;
-    /* Keep this */
-}
 
-.projectbg-quote {
-    position: absolute;
-    /* Keep this */
-    top: 80%;
-    left: 5%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 1.5em;
-    width: 40%;
-    z-index: 1;
-    /* High z-index to stay on top initially */
 
-}
 
-.GD-projects {
-    background-color: rgb(255, 255, 255);
-}
+
 .contact h1 {
     text-align: center;
-    padding: 80px  0;
-  }
+    padding: 80px 0;
+}
 
 .contact {
     background-color: #f9f9f9;
@@ -751,31 +1030,206 @@ h2 {
 
 .contact-me {
     display: grid;
-    grid-template-columns: repeat(2, minmax(200px, 650px)); /* Adjust max-width to control grid size and gap */
+    grid-template-columns: repeat(2, minmax(200px, 650px));
+    /* Adjust max-width to control grid size and gap */
     grid-auto-rows: minmax(200px, 650px);
-    gap: 0; /* Removes the space between grid items */
-    padding: 20px; /* Keep the padding around the entire grid */
+    gap: 0;
+    /* Removes the space between grid items */
+    padding: 20px;
+    /* Keep the padding around the entire grid */
     justify-items: center;
     /* align-items: center; */
-    height: 80%;
+    height: auto;
 }
+
+/* ==========================================================================
+   MOBILE VIEW (max-width: 768px) - Complete media query to solve overlap
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+
+    /* --- GENERAL MOBILE LAYOUT ADJUSTMENTS (Essentials for content flow) --- */
+    html,
+    body {
+        overflow-x: hidden;
+        /* Prevent horizontal scroll on smaller screens */
+    }
+
+    /* 
+    .content-wrapper {
+        padding: 0 40px;
+        /* Adjust outer container padding for mobile */
+    */ h1 {
+        font-size: 32px;
+        /* Adjust main headings for mobile */
+        text-align: center;
+        /* Center main headings */
+    }
+
+    /* --- CONTACT SECTION SPECIFIC OVERLAP FIXES AND MOBILE LAYOUT --- */
+
+    .contact {
+        padding: 0 20px;
+        /* Adjust section padding for mobile */
+    }
+
+    .contact h1 {
+        padding: 40px 40px;
+        /* Adjust padding for the section heading */
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .contact-me {
+        display: flex !important;
+        /* IMPORTANT: Override desktop grid to flex */
+        flex-direction: column !important;
+        /* Stack items vertically */
+        margin: 30px auto !important;
+        /* Center the entire section and provide vertical margin */
+        gap: 40px !important;
+        /* Provide generous gap between cards */
+        align-items: center !important;
+        /* Center cards horizontally within contact-me */
+
+        /* Explicitly unset grid-specific properties that might conflict from desktop */
+        grid-template-columns: unset !important;
+        grid-auto-rows: unset !important;
+        justify-items: unset !important;
+        padding: 0 !important;
+        /* Remove any padding that might come from desktop .contact-me */
+        height: auto !important;
+        /* Ensure height adjusts to content */
+        position: static !important;
+        /* Ensure no absolute/fixed positioning */
+        overflow: visible !important;
+        /* Ensure content isn't cut off */
+    }
+
+    .content-wrappers {
+        width: 100% !important;
+        /* Take full available width within contact-me */
+        max-width: 350px !important;
+        /* A reasonable max-width for content cards on mobile */
+        display: flex !important;
+        /* Keep internal flex for h6 and img */
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding-bottom: 20px !important;
+        /* Add space below the image/text within each wrapper */
+        position: static !important;
+        /* Ensure no absolute/fixed positioning on wrappers */
+        margin: 0 40px !important;
+        /* IMPORTANT: Reset any lingering margins on wrappers */
+
+        /* Crucial: Unset any desktop-specific grid-column properties */
+        grid-column: unset !important;
+        grid-row: unset !important;
+        /* Also unset grid-row if it was used */
+    }
+
+    /* Remove border-bottom from the last content-wrapper to avoid extra line */
+    .content-wrappers:last-child {
+        border-bottom: none !important;
+        padding-bottom: 0 !important;
+    }
+
+    /* --- CRUCIAL FIX: RESET THE NEGATIVE MARGINS FOR MOBILE --- */
+    .music {
+        margin-top: 0 !important;
+        /* This is the main culprit - set to 0 */
+    }
+
+    .traveling {
+        margin-bottom: 0 !important;
+        /* This also contributed - set to 0 */
+    }
+
+    /* Also ensure other named wrapper classes don't have negative margins for mobile */
+    .wide-top,
+    .square-top,
+    .square-bottom,
+    .wide-bottom {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+
+    /* --- AGGRESSIVE RESETS FOR HEADINGS AND IMAGES WITHIN WRAPPERS (to ensure they flow correctly) --- */
+    .content-wrappers h6 {
+        position: static !important;
+        /* Ensure it's not absolutely positioned */
+        top: unset !important;
+        left: unset !important;
+        right: unset !important;
+        bottom: unset !important;
+        transform: none !important;
+        /* Remove any lingering transforms */
+        margin-top: 20px !important;
+        /* Ensure space from previous element (if any) */
+        margin-bottom: 15px !important;
+        /* Space between heading and image */
+        font-size: 18px !important;
+        color: #333 !important;
+        padding: 0 !important;
+        width: auto !important;
+        white-space: normal !important;
+        text-align: center !important;
+        z-index: auto !important;
+    }
+
+    .content-wrappers img {
+        margin: 0 40px;
+        width: 100% !important;
+        /* Ensure image takes full width of container */
+        height: auto !important;
+        /* Maintain aspect ratio */
+        object-fit: cover !important;
+        max-width: 300px !important;
+        /* Keep a max width for images */
+        display: block !important;
+        margin: 0 auto !important;
+        /* Center image horizontally */
+    }
+
+    /* --- General mobile-specific adjustments for elements outside the contact section --- */
+    /* (You would add your other mobile styles here for sections like header, nav, hero, services, etc.) */
+    /* Example: */
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 40px;
+    }
+
+    .address h1 {
+
+        padding: 40px 40px;
+        /* Adjust padding for the section heading */
+        font-size: 32px;
+        text-align: center;
+    }
+
+    /* ... and so on for your other sections ... */
+}
+
 #map {
     display: flex;
     align-items: center;
     justify-content: center;
-    width:100%;
+    width: 100%;
     height: 450px;
-    border: 0; 
-    background-color: white;
-    display: block;  
-    margin:  5% 0% 20% 0%; 
+    border: 0;
+    background-color: #f9f9f9;
+    display: block;
+    margin: 5% 0% 20% 0%;
     /* margin-bottom: 120px; */
     position: relative;
     top: 50px;
 }
-.maps{
+
+.maps {
     width: 100%;
-    background-color: white;
+    background-color: #f9f9f9;
     /* height: 550px; */
 }
 
@@ -795,8 +1249,10 @@ h2 {
     height: auto;
     object-fit: cover;
     border-radius: 8px;
-    max-height: 70%; /* Keeps some space for heading */
+    max-height: 70%;
+    /* Keeps some space for heading */
 }
+
 .content-wrappers h6 {
     font-size: 16px;
     margin: 0;
@@ -805,7 +1261,8 @@ h2 {
 
 
 .wide-top {
-    grid-column: 1 / 2; /* Spans the first two columns */
+    grid-column: 1 / 2;
+    /* Spans the first two columns */
 }
 
 .square-top {
@@ -819,32 +1276,37 @@ h2 {
 .wide-bottom {
     grid-column: 2 / 3;
 }
+
 .music {
     margin-top: -230px;
 }
-.traveling{
+
+.traveling {
     margin-bottom: -230px;
 }
+
 .address {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 200px;
+    background-color: #f9f9f9;
 }
 
 .content-wrapper {
-    text-align: center; 
+    text-align: center;
 }
 
-.loco h1{
+.loco h1 {
     padding: 80px 0;
 }
+
 .loco button {
     font-size: 16px;
     margin: 0 0 25px 0;
     cursor: pointer;
-    padding: 15px 25px; 
+    padding: 15px 25px;
     border: 1px solid #ddd;
     border-radius: 5px;
     transition: transform 0.3s ease, background-color 0.3s ease;
@@ -853,11 +1315,12 @@ h2 {
 }
 
 .loco button:hover {
-    transform: scale(1.15); 
-    background: 	#1C1C1E;
+    transform: scale(1.15);
+    background: #1C1C1E;
     color: white;
     outline: none;
 }
+
 .footbg {
     background-image: url('color.jpg');
     background-size: cover;
@@ -869,7 +1332,7 @@ h2 {
     background-blend-mode: overlay;
     background-attachment: fixed;
     position: relative;
- 
+
 }
 
 .footbg-quote {
@@ -879,18 +1342,19 @@ h2 {
     transform: translateY(-50%);
     color: white;
     font-size: 1.5em;
-    width: 40%;
+    width: 90%;
     z-index: 1;
 
 
 }
 
-.footer{
+.footer {
     display: flex;
     padding: 80px 0;
-    
+
 
 }
+
 .Appreciate-button {
     background-color: #ffffff;
     color: #333;
@@ -904,7 +1368,8 @@ h2 {
     align-items: center;
     gap: 10px;
     cursor: pointer;
-    margin: 0; /* Remove the margin that was causing issues */
+    margin: 0;
+    /* Remove the margin that was causing issues */
 }
 
 .footer-left {
@@ -915,7 +1380,7 @@ h2 {
 
 .Appreciate-button:hover {
     transform: scale(1.15);
-    background: 	#1C1C1E;
+    background: #1C1C1E;
     color: white;
     border: none;
 }
@@ -932,15 +1397,20 @@ h2 {
 .Appreciate-button.liked i {
     color: rgb(253, 0, 97);
 }
+
 .Appreciate-button:active {
-    transform: scale(0.95); /* Scale down slightly when clicked */
-    transition: transform 0.1s ease-out; /* Quick transition to scale down */
+    transform: scale(0.95);
+    /* Scale down slightly when clicked */
+    transition: transform 0.1s ease-out;
+    /* Quick transition to scale down */
 }
-footer{
-     background: 	#1C1C1E;
+
+footer {
+    background: #1C1C1E;
     color: white;
     padding: 40px 0;
 }
+
 .content-wrappers-me {
     display: flex;
     flex-direction: column;
@@ -952,7 +1422,8 @@ footer{
     text-align: center;
     height: 100vh;
 }
-.content-wrapper-footer{
+
+.content-wrapper-footer {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 30px;
@@ -1001,11 +1472,15 @@ footer{
     width: 30%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Changed from center to flex-end */
-    justify-content: flex-end; /* changed from right to flex-end */
+    align-items: flex-end;
+    /* Changed from center to flex-end */
+    justify-content: flex-end;
+    /* changed from right to flex-end */
     text-align: right;
-    margin-left: auto; /* Push it to the right */
+    margin-left: auto;
+    /* Push it to the right */
 }
+
 .footer-section-about .copyright {
     margin-top: 20px;
     font-size: 12px;
@@ -1014,8 +1489,8 @@ footer{
 
 
 input::placeholder {
-    color: rgb(160, 159, 159); 
-    font-size: 14px; 
+    color: rgb(160, 159, 159);
+    font-size: 14px;
     opacity: 0.6;
 }
 
@@ -1031,16 +1506,18 @@ input::placeholder {
     font-size: 14px;
     text-decoration: none;
     transition: color 0.3s;
-     z-index: 1000;
+    z-index: 1000;
 }
+
 .hire-me-section {
     height: 600px;
-    background-color: #f9f9f9; /* soft light background */
+    background-color: #ffffff;
+    /* soft light background */
     padding: 60px 20px;
     text-align: center;
     margin: 0 10px;
     height: 600px;
-     display: flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
@@ -1077,12 +1554,12 @@ input::placeholder {
     color: #555;
     margin-bottom: 10px;
 }
-    
+
 .button-hire {
-  font-size: 16px;
+    font-size: 16px;
     margin: 0 0 150px 0;
     cursor: pointer;
-    padding: 15px 40px; 
+    padding: 15px 40px;
     border: 1px solid #ddd;
     border-radius: 5px;
     transition: transform 0.3s ease, background-color 0.3s ease;
@@ -1093,12 +1570,36 @@ input::placeholder {
 }
 
 .button-hire:hover {
-    transform: scale(1.15); 
-    background: 	#1C1C1E;
+    transform: scale(1.15);
+    background: #1C1C1E;
     color: white;
     outline: none;
 
 }
+
+.Qr {
+    display: none;
+    margin: 0 20px 0 0;
+    width: 35%;
+    max-width: 150px;
+    /* reduced from 200px to 150px */
+    border-radius: 10px;
+    text-align: center;
+}
+
+.Qr img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .Qr {
+        display: block;
+    }
+}
+
 
 @media (max-width: 768px) {
     .footer-container {
@@ -1112,5 +1613,162 @@ input::placeholder {
 
     .footer-section-newsletter form {
         justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .footer-left {
+        margin: 20px 0 0 25px;
+
+    }
+
+    .footer-left h2 {
+        font-size: 10px;
+        line-height: 10px;
+        font-weight: 600;
+    }
+
+    .content-wrapper-footer,
+    .footer-container,
+    .hire-me-section,
+    .footer-section-about,
+    .footer-section-follow {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .hire-me-section {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+    }
+
+    .hire-me-section h2 {
+        margin: 50px 0 20px;
+        font-size: 36px;
+    }
+
+    .hire-me-section .intro {
+        font-size: 16px;
+    }
+
+    .hire-me-section .services {
+        text-align: left;
+    }
+
+    .button-hire {
+        margin: 30px 0;
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .footer {
+
+        flex-direction: column;
+        padding: 40px 0;
+        height: 20vh;
+        gap: 20%;
+        margin-bottom: 40px;
+
+    }
+
+
+    .footer-container {
+        display: flex;
+        width: 100%;
+        gap: 40px;
+        padding: 40px 0;
+        height: 20vh;
+    }
+
+    .footer-section-about {
+        display: none;
+    }
+
+    .footer-section-follow {
+
+        text-align: left;
+        margin: 0;
+        padding: 0;
+
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 50%;
+    }
+
+
+    .footbg-quote {
+        font-size: 1.2em;
+        margin: 0 40px;
+
+        width: calc(100% - 80px);
+    }
+
+    #mark {
+        font-size: 10px;
+        margin: 40px 0 0 0;
+    }
+
+
+    .hidden {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .Appreciate-button {
+        width: 32%;
+        font-size: 12px;
+        margin: 10px 10px 0 0;
+        background-color: #ffffff;
+        color: #333;
+        border: 1px solid black;
+        padding: 10px 30px;
+        border-radius: 20px;
+        font-size: medium;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        cursor: pointer;
+        width: 40%;
+        max-width: 300px;
+
+    }
+
+    .Appreciate-button:hover {
+        transform: scale(1.1);
+        background: #1C1C1E;
+        color: white;
+        border: none;
+    }
+
+    .Appreciate-button i {
+        transition: color 0.3s ease;
+        color: #333;
+    }
+
+    .Appreciate-button.liked {
+        background-color: #000;
+        color: #fff;
+        width: 85%;
+        max-width: 44%;
+        border: none;
+    }
+
+    .Appreciate-button.liked i {
+        color: rgb(253, 0, 97);
+    }
+
+    .Appreciate-button:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease-out;
     }
 }

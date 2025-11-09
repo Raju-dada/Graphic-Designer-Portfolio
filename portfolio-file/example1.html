@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Membership Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: auto;
+        }
+        .left, .right {
+            flex: 1;
+        }
+        .left {
+            padding-right: 40px;
+        }
+        h2 {
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li::before {
+            content: "✔️";
+            margin-right: 10px;
+            color: green;
+        }
+        .right {
+            text-align: center;
+            background-color: #f1f4f8;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .price {
+            font-size: 32px;
+            margin: 20px 0;
+            color: #333;
+        }
+        button {
+            background-color: #4f46e5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3730a3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <h2>Lifetime membership</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque dolor perferendis aliquid quaerat assumenda.</p>
+            <h3>What’s included</h3>
+            <ul>
+                <li>Private forum access</li>
+                <li>Entry to annual conference</li>
+                <li>Member resources</li>
+                <li>Official member t-shirt</li>
+            </ul>
+        </div>
+        <div class="right">
+            <p>Pay once, own it forever</p>
+            <div class="price">$349 <small>USD</small></div>
+            <button>Get access</button>
+            <p style="font-size: 12px; margin-top: 10px;">Invoices and receipts available for easy company reimbursement</p>
+        </div>
+    </div>
+</body>
+</html>
